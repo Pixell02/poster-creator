@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@1,900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@900&display=swap" rel="stylesheet">
+    <title>Tworzenie plakatu</title>
+</head>
+<body style = "display: flex; flex-direction: column;">
+    <header id="header">Sesto kreator plakatów</header>
+    <div id="container">
+        <div id = "poster-container">
+            <div id="poster-border">
+                <div id="przeciwnik" class = "text"></div>
+                <div id="data" class = "text"></div>
+                <div id="ty" class = "text"></div>
+            </div>
+                <img src="plakat/poster.png" alt="poster.png" class="poster">
+        </div>
+        <div id="creator">
+            <p>Przeciwnik</p>
+            <input type="text" id="opponent" class = "input" >
+            <p>Miejscowość, data i godzina</p>
+            <input type="text" id = "city" class = "input">
+            <p>Twoja drużyna</p>
+            <input type="text" id = "team" class = "input"><br>
+            <button id="save" class="create-Btn">Zapisz</button>
+        </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/dom-to-image/2.6.0/dom-to-image.min.js"></script>
+    <script src = "app.js"></script>
+    <script src = "save-file.js"></script>
+</body>
+</html>

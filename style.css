@@ -1,124 +1,270 @@
 /* Body styling */
 
 body {
-    font-family: Roboto;
-    margin: 0;
+  font-family: Roboto;
+  margin: 0;
 }
 
 /* Header styling */
 
 #header {
-    text-align: center;
-    font-size: 25px;
-    background-color: rgb(3, 3, 105);
-    color: white;
-    border: none;
-    padding: 20px;
-    width: auto;
-    height: 40px;
+  text-align: center;
+  font-size: 25px;
+  background-color: rgb(3, 3, 105);
+  color: white;
+  border: none;
+  padding: 20px;
+  width: auto;
+  height: 40px;
 }
 
+/* left side styling */
+#left-side {
+  bottom: 0;
+  background-color: rgb(8, 8, 175);
+  display: flex;
+
+  top: 80px;
+  max-width: 150px;
+  z-index: 100;
+}
+ul {
+  padding: 0;
+  width: 150px;
+}
+.left-side-element {
+  list-style-type: none;
+  color: white;
+
+  padding: 10px;
+}
+.left-side-element:hover {
+  background-color: black;
+}
 /* Styling main content */
 
 #club-container {
-    
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    width: 100%;
-    height: auto;
-    
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  width: 100%;
+  height: auto;
 }
 
 .team-to-choose {
-    width: 150px;
-    height: 200px;
-    margin-left: 40px;
-    margin-top: 20px;
-    
+  width: 150px;
+  height: 200px;
+  margin-left: 40px;
+  margin-top: 20px;
 }
 
 .team-picture-border {
-    
-    border: black solid 1px;
-    width: 150px;
+  border: black solid 1px;
+  width: 150px;
 }
 
 .team-picture {
-    width: 150px;
+  width: 150px;
 }
 
 .create-Btn {
-    height: 40px;
-    width: 152px;
-    background-color: rgb(2, 2, 129);
-    color: white;
-    font-size: 18px;
-    border: none;
+  height: 40px;
+  width: 152px;
+  background-color: rgb(2, 2, 129);
+  color: white;
+  font-size: 18px;
+  border: none;
 }
 
 .create-Btn:hover {
-    background-color: rgb(1, 1, 65); 
+  background-color: rgb(1, 1, 65);
 }
 
 /* kreator */
 
 #poster {
-    width: 70%;
-    height: 100px;
+  width: 70%;
+  height: 100px;
 }
 
 #creator {
-    width: 30%;
-    padding-left: 10px;
-    border-left: rgb(179, 179, 179) solid 1px;
+  width: 100%;
+  height: 100%;
+  bottom: 0;
+  padding-left: 10px;
+  border-left: rgb(179, 179, 179) solid 1px;
+  overflow: auto;
 }
-#container {
-    display: flex;
-    height: auto;
+.container {
+  display: flex;
+  height: 892;
 }
 .poster {
-    
-    width: 60%;
-    margin: 40px;
+  max-width: 100%;
+  height: auto;
+  margin-right: 40px;
+  display: block;
+}
+.napis {
+  position: absolute;
+  margin-left: 100px;
+  margin-top: 100px;
 }
 #poster-container {
-    display: flex;
-    justify-content: center;
-    height: 100%;
-    width: 70%;
-    max-width: 90%;
+  display: flex;
 }
+
 #poster-border {
-    width: 500px;
-    height: 500px;
-    position: absolute;
-    margin-top: 40px;
+  width: 90%;
+  max-width: 700px;
+  max-height: 700px;
+  height: auto;
+  background-color: aqua;
 }
 #save {
-    margin-top: 20px;
+  margin-top: 20px;
 }
 .text {
-    
-    font-size: 30px;
-    color: white;
-    width: auto;
-    height: 10px;
-    
-    text-align: center;;
-    font-family: 'Montserrat', sans-serif;
-    font-style: italic;
+  font-size: 30px;
+  color: white;
+  position: relative;
+  height: 10px;
+  text-align: center;
+  font-family: "Montserrat", sans-serif;
+  font-style: italic;
 }
 #przeciwnik {
-    margin-top: 50%;
+  margin-top: 50%;
 }
 #data {
-    margin-top: 30px;
-    color: black !important;
-    font-size: 15px;
-    text-shadow: 0 0 10px yellow, 0 0 10px yellow, 0 0 10px yellow;
-    font-family: 'Montserrat', sans-serif;
-    font-style: bold;
+  margin-top: 30px;
+  color: black !important;
+  font-size: 15px;
+  text-shadow: 0 0 10px yellow, 0 0 10px yellow, 0 0 10px yellow;
+  font-family: "Montserrat", sans-serif;
+  font-style: bold;
 }
 #ty {
-    margin-top: 10px;
+  margin-top: 10px;
+}
+
+.square-container {
+  width: 150px;
+  height: 150px;
+  margin-top: 20px;
+  margin-left: 40px;
+  margin-right: 20px;
+  background-color: white;
+  filter: drop-shadow(0px 0px 2px black);
+  display: inline-block;
+}
+.square-container:hover {
+  transition: 0.2s ease-in-out;
+  background-color: rgb(230, 230, 230);
+}
+.title {
+  width: 100%;
+}
+#right-side {
+  display: inline-block;
+}
+.right-container {
+  width: 90%;
+}
+.mt {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+#poster-edit {
+  width: 100%;
+  height: 100%;
+  background-color: black;
+  display: block;
+}
+
+.dropdown {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.dropdown ul {
+  height: 0px;
+  text-align: left;
+  display: none;
+  list-style-type: none;
+}
+.dropdown ul li a {
+  display: inline-block;
+  height: 100%;
+}
+.dropdown a:focus + ul,
+.dropdown ul:hover {
+  height: 100%;
+  width: 100%;
+  display: block;
+}
+#creator a {
+  margin-top: 10px;
+  text-decoration: none;
+  color: black;
+}
+input[type="text"] {
+  width: 200px;
+  height: 30px;
+  font-size: 25px;
+}
+input[type="color"] {
+  margin-top: 10px;
+  width: 100px;
+  height: 50px;
+}
+.right-container {
+  display: flex;
+  width: 100%;
+}
+#creator-window {
+  width: 100%;
+  height: 892px;
+}
+#flex-container {
+  display: flex;
+  width: 70%;
+  justify-content: center;
+  align-items: center;
+}
+#flex-left-container {
+  display: flex;
+  width: 30%;
+}
+button {
+  background-color: white;
+  border: none;
+}
+@media only screen and (max-width: 1185px) {
+  .right-container {
+    display: inline-block;
+    width: 100%;
+  }
+  #flex-container {
+    width: 100%;
+  }
+  #creator-window {
+    display: flex;
+    margin-top: 20px;
+    border-top: 1px black solid;
+    width: 100%;
+    align-items: left;
+    justify-content: left;
+  }
+  #creator {
+    border: none;
+    width: 100%;
+  }
+  #poster-border {
+    margin-top: 20px;
+  }
+  input [type="text"] {
+    width: 90%;
+  }
 }

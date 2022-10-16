@@ -17,7 +17,7 @@ function createBackgroundImage(fabricCanvas) {
   
   
   const img = new Image();
-  img.src = "/plakat/poster.png";
+  img.src = "../plakat/poster.png";
   
   img.width = WIDTH;
   img.height = WIDTH;
@@ -168,10 +168,10 @@ fabricCanvas.renderAll();
 
 // More options
 
-const moreOptionsBtn = document.querySelectorAll("button");
+// const moreOptionsBtn = document.querySelectorAll("button");
 
-moreOptionsBtn.addEventListener("click", showOptions);
+// moreOptionsBtn.addEventListener("click", showOptions);
 
-function showOptions(){
+// function showOptions(){
   
-}
+// }

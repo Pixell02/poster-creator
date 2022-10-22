@@ -61,7 +61,7 @@ export class teamUI {
         document.getElementById("holder").append(img);
 
         const icon = new Image();
-        icon.src = "/icons/bin.png";
+        icon.src = "../icons/bin.png";
         icon.className = "binIcon";
         icon.width = 50;
         document.getElementById("holder").append(icon);
@@ -155,7 +155,7 @@ export class PlayerUI {
         document.getElementById("holder").append(img);
 
         const icon = new Image();
-        icon.src = "/icons/bin.png";
+        icon.src = "../icons/bin.png";
         icon.className = "binIcon";
         icon.width = 50;
         document.getElementById("holder").append(icon);

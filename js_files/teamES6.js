@@ -21,7 +21,7 @@ export class teamUI {
     createDiv.id = team.firstTeamName + "-" + team.lastTeamName;
     createDiv.className = "rectangle";
     createDiv.innerHTML = `
-        <a href="/sub_page/katalog.html" id="${team.firstTeamName}_${team.lastTeamName}" class="box">
+        <a href="sub_page/katalog.html" id="${team.firstTeamName}_${team.lastTeamName}" class="box">
           <div class="team-name" id="${team.firstTeamName}_${team.lastTeamName}">${team.firstTeamName} ${team.lastTeamName}</div>
           <div class="rectangle-content" id="${team.firstTeamName}_${team.lastTeamName}">
             

@@ -14,19 +14,21 @@ body {
   color: white;
   border: none;
   padding: 20px;
-  width: auto;
+  width: 100%;
   height: 40px;
+  z-index: 11;
+  position: fixed;
 }
 
 /* left side styling */
 #left-side {
-  bottom: 0;
   background-color: rgb(8, 8, 175);
   display: flex;
-
+  position: fixed;
+  bottom: 0;
   top: 80px;
   max-width: 150px;
-  z-index: 100;
+  z-index: 10;
 }
 ul {
   padding: 0;
@@ -35,28 +37,27 @@ ul {
 .left-side-element {
   list-style-type: none;
   color: white;
-
   padding: 10px;
 }
 .left-side-element:hover {
   background-color: black;
 }
-/* Styling main content */
+/* Styling index.html */
 
-#club-container {
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  width: 100%;
-  height: auto;
+
+.team-name {
+  padding: 5px;
 }
-
-.team-to-choose {
+/* .team-to-choose {
   width: 150px;
   height: 200px;
-  margin-left: 40px;
+  margin-left: 70px;
   margin-top: 20px;
+  display: inline-block;
+} */
+.down-container {
+  box-sizing: border-box;
 }
-
 .team-picture-border {
   border: black solid 1px;
   width: 150px;
@@ -78,7 +79,79 @@ ul {
 .create-Btn:hover {
   background-color: rgb(1, 1, 65);
 }
+.modal {
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  overflow: auto;
+  top: 0;
+  left: 0;
+}
+.modal-window {
+  width: 700px;
+  height: 600px;
+  max-width: 700px;
+  max-height: 600px;
+  background-color: rgb(255, 255, 255);
+  box-shadow: 0 0 2px 0 black;
+  display: flex;
+  justify-content: right;
+}
 
+
+.modal-block {
+  display: inline-block;
+  width: 100%;
+  height: 100%;
+  padding: 0 10px;
+}
+/* .closeFlex {
+  display: flex;
+  justify-content: right;
+} */
+.inputPlace {
+  margin-top: 10px;
+}
+
+.inputName {
+  margin-bottom: 10px;
+}
+.upload {
+  margin-top: 20px;
+  background-color: white;
+  width: 100%;
+  height: 200px;
+  box-shadow: 1px 1px 5px 1px black;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+#upload {
+  margin-left: 0;
+}
+.input-file {
+  display: none;
+}
+.uploaded-file {
+  max-width: 150px;
+  max-height: 150px;
+  margin-left: 50px;
+}
+.button-flex-right {
+  display: flex;
+  justify-content: right;
+}
+#Cancel {
+  margin-right: -10px;
+}
+.binIcon {
+  margin-right: 50px;
+}
 /* kreator */
 
 #poster {
@@ -96,7 +169,7 @@ ul {
 }
 .container {
   display: flex;
-  height: 892;
+  height: 100%;
 }
 .poster {
   max-width: 100%;
@@ -146,7 +219,10 @@ ul {
 #ty {
   margin-top: 10px;
 }
-
+a {
+  text-decoration: none;
+  color: black;
+}
 .square-container {
   width: 150px;
   height: 150px;
@@ -168,8 +244,12 @@ ul {
   display: inline-block;
 }
 .right-container {
-  width: 90%;
+  margin-top: 80px;
+  margin-left: 150px;
+  width: 100%;
+  display: inline-block;
 }
+
 .mt {
   display: flex;
   align-items: center;
@@ -219,10 +299,7 @@ input[type="color"] {
   width: 100px;
   height: 50px;
 }
-.right-container {
-  display: flex;
-  width: 100%;
-}
+
 #creator-window {
   width: 100%;
   height: 892px;
@@ -233,14 +310,84 @@ input[type="color"] {
   justify-content: center;
   align-items: center;
 }
-#flex-left-container {
+.flex-left-container {
   display: flex;
   width: 30%;
 }
-button {
+
+.title {
+  display: flex;
+  width: 100%;
+}
+.added {
+  min-height: 200px;
+  height: 200px;
+  width: 100%;
+  display: inline-block;
+}
+.toChoose {
+  width: 100%;
+  display: inline-block;
+  padding-left: 0;
+}
+.rectangle {
+  margin-left: 40px;
+  
+  margin-top: 20px;
+  width: 200px;
+  height: 150px;
   background-color: white;
+  filter: drop-shadow(0px 0px 2px black);
+  display: inline-block;
+}
+.box {
+  display: flex;
+  flex-direction: column;
+}
+
+.rectangle:hover {
+  transition: 0.5s ease-in-out;
+  background-color: rgb(196, 196, 196);
+}
+
+.rectangle-content {
+  max-width: 200px;
+  height: 125px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.icon {
+  max-width: 100px;
+  max-height: 100px;
+}
+.imageIcon {
+  max-width: 100px;
+  width: auto;
+  max-height: 100px;
+}
+.add-Btn {
+  background-color: rgb(6, 6, 170);
+  color: white;
+  margin-left: 20px;
+  margin-top: 20px;
+  height: 40px;
+  width: 150px;
+  box-sizing: border-box;
+  border-radius: 5px;
+  font-weight: bold;
   border: none;
 }
+.button-container {
+  display: inline-block;
+  height: 50px;
+  width: 100%;
+}
+.Btn-container {
+  margin-bottom: 20px;
+  box-sizing: border-box;
+}
+
 @media only screen and (max-width: 1185px) {
   .right-container {
     display: inline-block;

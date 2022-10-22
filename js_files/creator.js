@@ -16,7 +16,7 @@ createBackgroundImage(fabricCanvas);
 
 function createBackgroundImage(fabricCanvas) {
   const img = new Image();
-  img.src = "/plakat/poster.png";
+  img.src = "../plakat/poster.png";
 
   img.width = WIDTH;
   img.height = WIDTH;

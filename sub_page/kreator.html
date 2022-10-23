@@ -14,7 +14,17 @@
       href="https://fonts.googleapis.com/css2?family=Montserrat:wght@900&display=swap"
       rel="stylesheet"
     />
-
+    <style>
+      .container {
+        display: flex;
+        height: 100%;
+        position: absolute;
+        width: 100%;
+      }
+      .right-container {
+        flex-direction: row !important;
+      }
+    </style>
     <title>Tworzenie plakatu</title>
   </head>
   <body style="display: flex; flex-direction: column">
@@ -127,6 +137,7 @@
               <p>Zawodnik</p>
               <select id="opponent-team" class="select"></select>
               <br />
+
               <button id="save" class="create-Btn">Zapisz</button>
             </div>
           </div>

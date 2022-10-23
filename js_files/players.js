@@ -1,8 +1,4 @@
-import {
-  PlayerUI as PlayerUI,
-  Player as Player,
-  StorePlayer as StorePlayer,
-} from "./teamES6.js";
+import { PlayerUI, Player, StorePlayer} from "./teamES6.js";
 
 window.addEventListener("DOMContentLoaded", StorePlayer.displayPlayers);
 

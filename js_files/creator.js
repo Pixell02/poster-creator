@@ -11,26 +11,6 @@ yourTeamInput.addEventListener("keyup", (e) => {
   const yourTeam = new posterUI();
   yourTeam.writeYourTeamName(e, yourTeamInput);
   
-  // const shadow = new fabric.Shadow({
-  //   color: "black",
-  //   blur: 20,
-  // });
-
-  // const text = new fabric.Text(yourTeamInput.value, {
-  //   fontFamily: "Montserrat",
-  //   width: 150,
-  //   fill: "#fff",
-  //   shadow: shadow,
-  //   textAlign: "center",
-  //   top: 250,
-  // });
-  // text.width = 300;
-  // text.left = WIDTH / 2 - text.width / 2;
-  // text.className = "yourTeam";
-
-  // fabricCanvas.add(text);
-  // // fabricCanvas.add(text);
-  // fabricCanvas.renderAll();
 });
 
 

@@ -4,7 +4,7 @@ export class poster {
     yourTeamLogo,
     yourTeamPlayer,
     opponentTeamName,
-    opponentTeamlogo
+    opponentTeamLogo
   ) {
     this.yourTeamName = yourTeamName;
     this.yourTeamLogo = yourTeamLogo;
@@ -14,62 +14,12 @@ export class poster {
   }
 }
 export class posterUI {
-  static loadData() {
-    const WIDTH = 700;
-    const canvas = document.getElementById("poster-edit");
-    canvas.width = WIDTH;
-    canvas.height = WIDTH;
-    console.log(canvas.height);
-    const fabricCanvas = new fabric.Canvas(canvas);
-    document.getElementsByClassName("canvas-container")[0].style.width =
-      "700px";
-    document.getElementsByClassName("canvas-container")[0].style.height =
-      "700px";
-    document.getElementsByClassName("upper-canvas")[0].width = WIDTH;
-    document.getElementsByClassName("upper-canvas")[0].height = WIDTH;
-    document.getElementsByClassName("upper-canvas")[0].style.width = "700px";
-    document.getElementsByClassName("upper-canvas")[0].style.height = "700px";
-    const ctx = canvas.getContext("2d");
-    createBackgroundImage(fabricCanvas);
-
-    function createBackgroundImage(fabricCanvas) {
-      const img = new Image();
-      img.src = "../plakat/poster.png";
-
-      img.width = WIDTH;
-      img.height = WIDTH;
-      let ratio = WIDTH / img.width;
-
-      canvas.height = img.height * ratio;
-      canvas.width = WIDTH;
-      console.log(canvas.height);
-      fabricCanvas.width = WIDTH;
-      fabricCanvas.height = img.height * ratio;
-      img.onload = () => {
-        const newImg = new fabric.Image(img);
-        newImg.scaleToWidth(WIDTH);
-        fabricCanvas.setBackgroundImage(
-          newImg,
-          fabricCanvas.renderAll.bind(fabricCanvas)
-        );
-        fabricCanvas.selection = false;
-        fabricCanvas.renderAll();
-      };
-    }
-    
-    // posterUI.choosePlayer(e);
-    return fabricCanvas;
-  }
-   writeYourTeamName(e, yourTeamInput) {
-    const WIDTH = 700;
+  static writeYourTeamName(e, yourTeamInput, fabricCanvas, WIDTH) {
     const yourTeamValue = yourTeamInput;
-    const fabricCanvas = posterUI.loadData();
     let objects = fabricCanvas._objects;
-
-    fabricCanvas._objects.forEach((element, i) => {
+    objects.forEach((element, i) => {
       if (fabricCanvas.item(i).className == "yourTeam") {
         fabricCanvas.remove(fabricCanvas.item(i));
-        console.log(i);
         fabricCanvas.renderAll();
       }
     });
@@ -81,22 +31,125 @@ export class posterUI {
 
     const text = new fabric.Text(yourTeamValue.value, {
       fontFamily: "Montserrat",
-      width: 150,
-      fill: "#fff",
+      fill: Edit.getFirstColor(e, fabricCanvas),
       shadow: shadow,
       textAlign: "center",
       top: 250,
+      className: "yourTeam",
     });
     text.width = 300;
     text.left = WIDTH / 2 - text.width / 2;
-    text.className = "yourTeam";
-
     fabricCanvas.add(text);
-    // fabricCanvas.add(text);
     fabricCanvas.renderAll();
   }
-  uploadYourLogo() {}
-  choosePlayer() {}
+  static writeCity(e, cityInput, fabricCanvas, WIDTH) {
+    const cityInputValue = cityInput;
+    let objects = fabricCanvas._objects;
+    console.log(objects);
+    fabricCanvas._objects.forEach((element, i) => {
+      console.log(fabricCanvas.item(i).className);
+      if (fabricCanvas.item(i).className == "city") {
+        fabricCanvas.remove(fabricCanvas.item(i));
+        console.log(i);
+      }
+    });
+
+    const shadow = new fabric.Shadow({
+      color: "black",
+      blur: 20,
+    });
+
+    const text = new fabric.Text(cityInput.value, {
+      fontFamily: "Montserrat",
+      fill: "yellow",
+      fontSize: 20,
+      shadow: shadow,
+      textAlign: "center",
+      top: 300,
+    });
+    text.width = 300;
+    text.left = WIDTH / 2 - text.width / 2;
+    text.className = "city";
+
+    fabricCanvas.add(text);
+    fabricCanvas.renderAll();
+  }
+  static writeOpponentTeamName(e, opponentInput, fabricCanvas, WIDTH) {
+    let objects = fabricCanvas._objects;
+    console.log(objects);
+
+    fabricCanvas._objects.forEach((element, i) => {
+      if (fabricCanvas.item(i).className == "opponent") {
+        fabricCanvas.remove(fabricCanvas.item(i));
+        console.log(i);
+        fabricCanvas.renderAll();
+      }
+    });
+    const shadow = new fabric.Shadow({
+      color: "black",
+      blur: 20,
+    });
+    const text = new fabric.Text(opponentInput.value, {
+      fontFamily: "Montserrat",
+      width: 150,
+      fill: "white",
+      shadow: shadow,
+      textAlign: "center",
+      top: 325,
+    });
+    text.width = 300;
+    text.left = WIDTH / 2 - text.width / 2;
+    text.className = "opponent";
+
+    fabricCanvas.add(text);
+    fabricCanvas.renderAll();
+  }
+
+  static uploadYourLogo() {}
+  static loadImagesToSelect() {
+    // Loading players of selected team
+
+    const playerImage = document.querySelector("#your-player");
+    const blankOption = document.createElement("option");
+    blankOption.textContent = "";
+    playerImage.append(blankOption);
+    const getPlayers = JSON.parse(localStorage.getItem("players"));
+    const checkId = JSON.parse(localStorage.getItem("chosenTeam"));
+    getPlayers.forEach((player) => {
+      const option = document.createElement("option");
+      if (player.id == checkId) {
+        option.innerHTML = `${player.number} ${player.firstPlayerName} ${player.lastPlayerName}`;
+        playerImage.append(option);
+      }
+    });
+
+    // Loading opponents of selected team
+
+    const opponents = document.querySelector("#opponent-team");
+    const secondBlankOption = document.createElement("option");
+    secondBlankOption.textContent = "";
+    opponents.append(secondBlankOption);
+    const getOpponent = JSON.parse(localStorage.getItem("opponents"));
+    getOpponent.forEach((opponent) => {
+      const option = document.createElement("option");
+      option.innerHTML = `${opponent.firstOpponentName} ${opponent.secondOpponentName}`;
+      opponents.append(option);
+    });
+  }
   changeYourTeamNameColor() {}
-  uploadOpponentTeamLogo() {}
+}
+export class Edit {
+  static getFirstColor(e, fabricCanvas, yourTeamInput) {
+    const WIDTH = 700;
+    const getColor = document.querySelector("#first-text-color").value;
+    console.log(fabricCanvas);
+    let objects = fabricCanvas._objects;
+    objects.forEach((object, i) => {
+      if (fabricCanvas.item(i).className == "yourTeam") {
+        fabricCanvas.remove(fabricCanvas.item(i));
+        posterUI.writeYourTeamName(e, yourTeamInput, fabricCanvas, WIDTH);
+      }
+    });
+    return getColor;
+  }
 }

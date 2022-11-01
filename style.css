@@ -34,6 +34,12 @@ ul {
   padding: 0;
   width: 150px;
 }
+.show-list, li {
+  display: flex;
+  flex-direction: column;
+  width: 150px;
+  margin: 10px;
+}
 .left-side-element {
   list-style-type: none;
   color: white;
@@ -48,13 +54,7 @@ ul {
 .team-name {
   padding: 5px;
 }
-/* .team-to-choose {
-  width: 150px;
-  height: 200px;
-  margin-left: 70px;
-  margin-top: 20px;
-  display: inline-block;
-} */
+
 .down-container {
   box-sizing: border-box;
 }
@@ -110,10 +110,7 @@ ul {
   height: 100%;
   padding: 0 10px;
 }
-/* .closeFlex {
-  display: flex;
-  justify-content: right;
-} */
+
 .inputPlace {
   margin-top: 10px;
 }
@@ -162,7 +159,7 @@ ul {
 #creator {
   width: 100%;
   height: 100%;
-  bottom: 0;
+  
   padding-left: 10px;
   border-left: rgb(179, 179, 179) solid 1px;
   overflow: auto;
@@ -177,7 +174,7 @@ ul {
   max-width: 100%;
   height: auto;
   margin-right: 40px;
-  display: block;
+  
 }
 .napis {
   position: absolute;
@@ -250,8 +247,7 @@ a {
   margin-left: 150px;
   width: 100%;
   display: flex;
-
-  height: 100%;
+  min-height: 876px;
   flex-direction: column;
 }
 
@@ -265,7 +261,6 @@ a {
   width: 100%;
   height: 100%;
   background-color: black;
-  display: block;
 }
 
 .dropdown {
@@ -279,16 +274,6 @@ a {
   display: none;
   list-style-type: none;
 }
-.dropdown ul li a {
-  display: inline-block;
-  height: 100%;
-}
-.dropdown a:focus + ul,
-.dropdown ul:hover {
-  height: 100%;
-  width: 100%;
-  display: block;
-}
 #creator a {
   margin-top: 10px;
   text-decoration: none;
@@ -299,10 +284,10 @@ input[type="text"] {
   height: 30px;
   font-size: 25px;
 }
-input[type="color"] {
+input[type="color"], select {
   margin-top: 10px;
-  width: 100px;
-  height: 50px;
+  width: 150px;
+  height: 20px;
 }
 
 #creator-window {
@@ -393,6 +378,21 @@ input[type="color"] {
   margin-bottom: 20px;
   box-sizing: border-box;
 }
+#opponent-team, #your-player {
+  width: 210px;
+}
+.option {
+  margin-top: 10px;
+}
+svg {
+  margin-right: 10px;
+}
+.dropdown .more-options .bi:focus,
+.dropdown .more-options .bi:hover {
+  transition: ease-in-out 0.5s;
+  transform: rotate(180deg);
+}
+
 
 @media only screen and (max-width: 1185px) {
   .container {
@@ -420,13 +420,13 @@ input[type="color"] {
   #creator-window {
     display: flex;
     border-top: 1px black solid;
-    
     align-items: left;
     justify-content: left;
   }
   #creator {
     border: none;
     width: 100%;
+    height: auto;
   }
   #poster-border {
     margin-top: 20px;

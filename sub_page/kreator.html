@@ -14,7 +14,7 @@
       href="https://fonts.googleapis.com/css2?family=Montserrat:wght@900&display=swap"
       rel="stylesheet"
     />
-    
+
     <style>
       .container {
         display: flex;
@@ -83,13 +83,27 @@
               <p>Nazwa twojej drużyny</p>
               <input type="text" id="team" class="input" />
               <div class="dropdown">
-                <span class="more-options">Więcej opcji</span>
+                <span class="more-options1"
+                  ><svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="16"
+                    height="16"
+                    fill="currentColor"
+                    class="bi bi-caret-down-fill"
+                    viewBox="0 0 16 16"
+                  >
+                    <path
+                      d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z"
+                    />
+                  </svg>
+                  <span class="more">Więcej opcji</span></span
+                >
                 <ul class="show-list" id="your-team-color">
                   <li class="option">
-                    kolor napisu <br /><input type="color" name="" id="" />
+                    kolor napisu <input type="color" id="first-text-color" value ="#ffffff" />
                   </li>
                   <li class="option">
-                    czcionka: <br />
+                    czcionka:
                     <select name="fonts" id="fonts"></select>
                   </li>
                   <li class="option">
@@ -101,13 +115,27 @@
               <p>Miejscowość, data i godzina</p>
               <input type="text" id="city" class="input" />
               <div class="dropdown">
-                <a href="#" class="">Więcej opcji</a>
-                <ul class="show-list">
+                <span class="more-options2"
+                  ><svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="16"
+                    height="16"
+                    fill="currentColor"
+                    class="bi bi-caret-down-fill"
+                    viewBox="0 0 16 16"
+                  >
+                    <path
+                      d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z"
+                    />
+                  </svg>
+                  <span class="more">Więcej opcji</span></span
+                >
+                <ul class="show-list" id="city-text-color">
                   <li class="option">
-                    kolor napisu <br /><input type="color" name="" id="" />
+                    kolor napisu <br /><input type="color"  id="city-text-color" value="#000000" />
                   </li>
                   <li class="option">
-                    czcionka: <br />
+                    czcionka:
                     <select name="fonts" id="fonts"></select>
                   </li>
                   <li class="option">
@@ -119,10 +147,23 @@
               <p>Nazwa przeciwnej drużyny</p>
               <input type="text" id="opponent" class="input" />
               <div class="dropdown">
-                <a href="#" class="">Więcej opcji</a>
-                <ul class="show-list">
+                <span class="more-options3"
+                  ><svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="16"
+                    height="16"
+                    fill="currentColor"
+                    class="bi bi-caret-down-fill"
+                    viewBox="0 0 16 16"
+                  >
+                    <path
+                      d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z"
+                    />
+                  </svg>
+                  <span class="more">Więcej opcji</span></span>
+                <ul class="show-list" id="opponent-team-text">
                   <li class="option">
-                    kolor napisu <br /><input type="color" name="" id="" />
+                    kolor napisu <br /><input type="color" />
                   </li>
                   <li class="option">
                     czcionka: <br />
@@ -137,7 +178,7 @@
               <p>Logo przeciwnej drużyny</p>
               <select id="opponent-team" class="select"></select>
               <p>Zawodnik</p>
-              <select id="opponent-team" class="select"></select>
+              <select id="your-player" class="select"></select>
               <br />
 
               <button id="save" class="create-Btn">Zapisz</button>

@@ -36,6 +36,7 @@ export class posterUI {
       textAlign: "center",
       top: 250,
       className: "yourTeam",
+      selectable: false
     });
     text.width = 300;
     text.left = WIDTH / 2 - text.width / 2;
@@ -66,6 +67,7 @@ export class posterUI {
       shadow: shadow,
       textAlign: "center",
       top: 300,
+      selectable: false
     });
     text.width = 300;
     text.left = WIDTH / 2 - text.width / 2;
@@ -96,6 +98,7 @@ export class posterUI {
       shadow: shadow,
       textAlign: "center",
       top: 325,
+      selectable:false
     });
     text.width = 300;
     text.left = WIDTH / 2 - text.width / 2;
@@ -107,6 +110,7 @@ export class posterUI {
 
   static uploadYourLogo() {}
   static loadImagesToSelect() {
+
     // Loading players of selected team
 
     const playerImage = document.querySelector("#your-player");
@@ -151,5 +155,76 @@ export class Edit {
       }
     });
     return getColor;
+  }
+  static addOpponentLogo(opponentLogo, fabricCanvas) {
+    fabricCanvas._objects.forEach((images, i) => {
+      if (fabricCanvas.item(i).className == "opponent-logo") {
+        fabricCanvas.remove(fabricCanvas.item(i));
+      }
+    });
+    const getLogo = JSON.parse(localStorage.getItem("opponents"));
+    console.log(getLogo[0].id);
+    getLogo.forEach((logo, i) => {
+      console.log(logo.id);
+      
+      if ( logo.firstOpponentName + " " + logo.secondOpponentName == opponentLogo) {
+        let opponentImageLogo = new Image();
+        opponentImageLogo.src = logo.logo;
+        opponentImageLogo.width = 150;
+        opponentImageLogo.height = "auto";
+        console.log(opponentImageLogo.width);
+        const fabricOpponentLogo = new fabric.Image(opponentImageLogo , {
+          left: fabricCanvas.width/2,
+          top: 400,
+          originX: "center",
+          originY: "center",
+          selectable: false,
+          className: "opponent-logo"
+        }); 
+        console.log(fabricOpponentLogo);
+        fabricOpponentLogo.scaleToWidth(150);
+        if(fabricOpponentLogo.height > 350) {
+         fabricOpponentLogo.scaleToHeight(150); 
+        }
+        
+        fabricCanvas.add(fabricOpponentLogo);  
+        fabricCanvas.renderAll();
+      }
+    });
+  }
+  static addYourPlayerImage(playerImageSrc, fabricCanvas) {
+    console.log(playerImageSrc);
+    fabricCanvas._objects.forEach((images, i) => {
+      if (fabricCanvas.item(i).className == "your-playerImage") {
+        fabricCanvas.remove(fabricCanvas.item(i));
+      }
+    });
+    const getPlayers = JSON.parse(localStorage.getItem("players"));
+    console.log(getPlayers[0].id);
+    getPlayers.forEach((players, i) => {
+      console.log(players);
+      if (players.number + " "+ players.firstPlayerName + " " + players.lastPlayerName == playerImageSrc) {
+        let playerImage = new Image();
+        playerImage.src = players.image;
+        playerImage.width = 150;
+        playerImage.height = "auto";
+        console.log(playerImage.width);
+        const fabricPlayerImage = new fabric.Image(playerImage , {
+          left: 525,
+          top: 500,
+          originX: "center",
+          originY: "center",
+          selectable: false,
+          className: "your-playerImage"
+        }); 
+        console.log(fabricPlayerImage);
+        fabricPlayerImage.scaleToWidth(150);
+        if(fabricPlayerImage.height > 350) {
+         fabricPlayerImage.scaleToHeight(150); 
+        }
+        fabricCanvas.add(fabricPlayerImage);  
+        fabricCanvas.renderAll();
+      }
+    });
   }
 }

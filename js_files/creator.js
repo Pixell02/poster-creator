@@ -21,9 +21,9 @@ createBackgroundImage(fabricCanvas);
 function createBackgroundImage(fabricCanvas) {
   const img = new Image();
   img.src = "../plakat/poster.png";
-
   img.width = WIDTH;
   img.height = WIDTH;
+
   let ratio = WIDTH / img.width;
 
   canvas.height = img.height * ratio;
@@ -105,8 +105,22 @@ const moreOptions3 = document.querySelector(".more-options3");
 moreOptions3.addEventListener("click", (e) => {
   if (document.querySelector("#opponent-team-text").style.display == "none") {
     document.querySelector("#opponent-team-text").style.display = "initial";
+    
   } else {
     document.querySelector("#opponent-team-text").style.display = "none";
   }
 });
+  const opponentOption = document.querySelector("#opponent-team");
+
+  opponentOption.addEventListener("change", (e) => {
+    let opponentLogo = opponentOption.value;
+    console.log(opponentLogo);
+    Edit.addOpponentLogo(opponentLogo, fabricCanvas);
+  });
+
+  const yourPlayerImage = document.querySelector("#your-player");
+  yourPlayerImage.addEventListener("change", (e) => {
+    const playerImageSrc = yourPlayerImage.value;
+    Edit.addYourPlayerImage(playerImageSrc, fabricCanvas);
+  });
 saveFile();

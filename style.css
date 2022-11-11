@@ -8,6 +8,39 @@ body {
   font-family: Roboto;
  
 }
+@font-face {
+  font-family: Acetone;
+  src: url(fonts/Acetone-w1gn6.ttf);
+}
+@font-face {
+  font-family: Octin;
+  src: url(fonts/octin_college_rg.otf);
+}
+@font-face {
+  font-family: RadleySans;
+  src: url(fonts/RadleySans-ZVYBK.ttf);
+}
+@font-face {
+  font-family: RankedSports;
+  src: url(fonts/RankedSports-4BMrB.ttf);
+}
+@font-face {
+  font-family: RumbleSport;
+  src: url(fonts/RumblesportathleticcapsBold-ZxDJ.otf);
+}
+@font-face {
+  font-family: Runboy;
+  src: url(fonts/RunboyFreeTrial-2ODAo.otf);
+}
+@font-face {
+  font-family: Spantaran;
+  src: url(fonts/Spantaran-GE2D.ttf);
+}
+@font-face {
+  font-family: Montserrat;
+  src: url(fonts/Montserrat-Black.ttf);
+}
+
 
 /* Header styling */
 

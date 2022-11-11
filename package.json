@@ -1,6 +1,7 @@
 {
   "dependencies": {
     "dom-to-image": "^2.6.0",
-    "fabric": "^5.2.4"
+    "fabric": "^5.2.4",
+    "fontfaceobserver": "^2.3.0"
   }
 }

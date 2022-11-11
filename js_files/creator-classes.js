@@ -15,6 +15,7 @@ export class poster {
 }
 export class posterUI {
   static writeYourTeamName(e, yourTeamInput, fabricCanvas, WIDTH) {
+    WIDTH = 700;
     const yourTeamValue = yourTeamInput;
     let objects = fabricCanvas._objects;
     objects.forEach((element, i) => {
@@ -25,49 +26,56 @@ export class posterUI {
     });
 
     const shadow = new fabric.Shadow({
-      color: "black",
+      color: Edit.setColorShadow(e, yourTeamInput, fabricCanvas),
       blur: 20,
     });
 
     const text = new fabric.Text(yourTeamValue.value, {
-      fontFamily: "Montserrat",
-      fill: Edit.getFirstColor(e, fabricCanvas),
+      fontFamily: Edit.getFont(e, yourTeamInput, fabricCanvas),
+      fill: Edit.getFirstColor(e, yourTeamInput, fabricCanvas),
       shadow: shadow,
       textAlign: "center",
       top: 250,
       className: "yourTeam",
-      selectable: false
+      selectable: false,
+      width: 300,
+      stroke: Edit.setColorStroke(e, yourTeamInput, fabricCanvas),
+      strokeWidth: Number(Edit.setStroke(e, yourTeamInput, fabricCanvas)),
     });
-    text.width = 300;
+    console.log(text);
     text.left = WIDTH / 2 - text.width / 2;
-    fabricCanvas.add(text);
-    fabricCanvas.renderAll();
+    setTimeout(add, 5);
+    function add() {
+      fabricCanvas.add(text);
+      fabricCanvas.renderAll();
+    }
   }
   static writeCity(e, cityInput, fabricCanvas, WIDTH) {
+    WIDTH = 700;
     const cityInputValue = cityInput;
     let objects = fabricCanvas._objects;
-    console.log(objects);
     fabricCanvas._objects.forEach((element, i) => {
       console.log(fabricCanvas.item(i).className);
       if (fabricCanvas.item(i).className == "city") {
         fabricCanvas.remove(fabricCanvas.item(i));
-        console.log(i);
       }
     });
 
     const shadow = new fabric.Shadow({
-      color: "black",
+      color: Edit.setSecondColorShadow(e, cityInput, fabricCanvas),
       blur: 20,
     });
 
-    const text = new fabric.Text(cityInput.value, {
-      fontFamily: "Montserrat",
-      fill: "yellow",
+    const text = new fabric.Text(cityInputValue.value, {
+      fontFamily: Edit.getSecondFont(e, cityInput, fabricCanvas),
+      fill: Edit.getSecondColor(e, cityInput, fabricCanvas),
       fontSize: 20,
       shadow: shadow,
       textAlign: "center",
       top: 300,
-      selectable: false
+      selectable: false,
+      stroke: Edit.setSecondColorStroke(e, cityInput, fabricCanvas),
+      strokeWidth: Number(Edit.setSecondStroke(e, cityInput, fabricCanvas))
     });
     text.width = 300;
     text.left = WIDTH / 2 - text.width / 2;
@@ -76,43 +84,42 @@ export class posterUI {
     fabricCanvas.add(text);
     fabricCanvas.renderAll();
   }
-  static writeOpponentTeamName(e, opponentInput, fabricCanvas, WIDTH) {
+  static writeOpponentTeamName( e,opponentInput ,fabricCanvas, WIDTH) {
+    WIDTH = 700;
     let objects = fabricCanvas._objects;
-    console.log(objects);
 
     fabricCanvas._objects.forEach((element, i) => {
       if (fabricCanvas.item(i).className == "opponent") {
         fabricCanvas.remove(fabricCanvas.item(i));
-        console.log(i);
         fabricCanvas.renderAll();
       }
     });
     const shadow = new fabric.Shadow({
-      color: "black",
+      color: Edit.setThirdColorShadow(e, opponentInput, fabricCanvas),
       blur: 20,
     });
     const text = new fabric.Text(opponentInput.value, {
-      fontFamily: "Montserrat",
-      width: 150,
-      fill: "white",
+      fontFamily: Edit.getThirdFont(e, opponentInput, fabricCanvas),
+      fill: Edit.getThirdColor(e, opponentInput, fabricCanvas),
       shadow: shadow,
       textAlign: "center",
       top: 325,
-      selectable:false
+      selectable: false,
+      stroke: Edit.setThirdColorStroke(e, opponentInput, fabricCanvas),
+      strokeWidth: Number(Edit.setThirdStroke(e, opponentInput, fabricCanvas))
     });
+    console.log(text)
     text.width = 300;
     text.left = WIDTH / 2 - text.width / 2;
     text.className = "opponent";
-
     fabricCanvas.add(text);
     fabricCanvas.renderAll();
   }
 
   static uploadYourLogo() {}
   static loadImagesToSelect() {
-
     // Loading players of selected team
-
+    let pickFont = "montserrat";
     const playerImage = document.querySelector("#your-player");
     const blankOption = document.createElement("option");
     blankOption.textContent = "";
@@ -142,19 +149,219 @@ export class posterUI {
   }
   changeYourTeamNameColor() {}
 }
+
 export class Edit {
-  static getFirstColor(e, fabricCanvas, yourTeamInput) {
-    const WIDTH = 700;
+  static getFirstColor(e, yourTeamInput, fabricCanvas) {
     const getColor = document.querySelector("#first-text-color").value;
-    console.log(fabricCanvas);
     let objects = fabricCanvas._objects;
     objects.forEach((object, i) => {
       if (fabricCanvas.item(i).className == "yourTeam") {
-        fabricCanvas.remove(fabricCanvas.item(i));
-        posterUI.writeYourTeamName(e, yourTeamInput, fabricCanvas, WIDTH);
+        fabricCanvas.item(i).set("fill", getColor);
+        console.log(fabricCanvas.item(i));
+        posterUI.writeYourTeamName(e, yourTeamInput, fabricCanvas);
       }
     });
     return getColor;
+  }
+  static getFont(e, yourTeamInput, fabricCanvas) {
+    const getFont = document.querySelector("#font1").value;
+    let objects = fabricCanvas._objects;
+    objects.forEach((object, i) => {
+      if (fabricCanvas.item(i).className == "yourTeam")
+        loadAndUse(getFont, fabricCanvas, i);
+    });
+
+    return getFont;
+
+    function loadAndUse(getFont, fabricCanvas, i) {
+      const myFont = new FontFaceObserver(getFont);
+      myFont
+        .load()
+        .then(() => {
+          fabricCanvas.item(i).set("fontFamily", getFont);
+          fabricCanvas.renderAll();
+        })
+        .catch((e) => console.log(e));
+    }
+  }
+  static setStroke(e, yourTeamInput, fabricCanvas) {
+    let getStrokeSize = document.querySelector("#strokeSize1").value;
+    const objects = fabricCanvas._objects;
+    objects.forEach((obj, i) => {
+      if (fabricCanvas.item(i).className == "yourTeam") {
+        fabricCanvas.item(i).set("StrokeWidth", getStrokeSize);
+        posterUI.writeYourTeamName(e, yourTeamInput, fabricCanvas);
+      }
+    });
+    return getStrokeSize;
+  }
+  static setColorStroke(e, yourTeamInput, fabricCanvas) {
+    const getStrokeColor = document.querySelector("#strokeColor1").value;
+    const objects = fabricCanvas._objects;
+    objects.forEach((obj, i) => {
+      if (fabricCanvas.item(i).className == "yourTeam") {
+        fabricCanvas.item(i).set("stroke", getStrokeColor);
+        posterUI.writeYourTeamName(e, yourTeamInput, fabricCanvas);
+      }
+    });
+
+    return getStrokeColor;
+  }
+  static setColorShadow(e, yourTeamInput, fabricCanvas) {
+    const getShadowColor = document.querySelector("#ShadowColor1").value;
+    const objects = fabricCanvas._objects;
+    objects.forEach((obj, i) => {
+      if (fabricCanvas.item(i).className == "yourTeam") {
+        fabricCanvas.item(i).set("shadow", getShadowColor);
+        posterUI.writeYourTeamName(e, yourTeamInput, fabricCanvas);
+      }
+    });
+
+    return getShadowColor;
+  }
+  static getSecondColor(e, cityInput, fabricCanvas) {
+    const getColor = document.querySelector("#city-color").value;
+    console.log(getColor);
+    let objects = fabricCanvas._objects;
+    objects.forEach((object, i) => {
+      if (fabricCanvas.item(i).className == "city") {
+        fabricCanvas.item(i).set("fill", getColor);
+        posterUI.writeCity(e, cityInput, fabricCanvas);
+      }
+    });
+    return getColor;
+  }
+  static getSecondFont(e, cityInput, fabricCanvas) {
+    const getFont = document.querySelector("#font2").value;
+    let objects = fabricCanvas._objects;
+    objects.forEach((object, i) => {
+      if (fabricCanvas.item(i).className == "city")
+        loadAndUse(getFont, fabricCanvas, i);
+    });
+
+    return getFont;
+
+    function loadAndUse(getFont, fabricCanvas, i) {
+      const myFont = new FontFaceObserver(getFont);
+      myFont
+        .load()
+        .then(() => {
+          if (fabricCanvas.item(i).className == "city") {
+            fabricCanvas.item(i).set("fontFamily", getFont);
+            fabricCanvas.renderAll();
+          }
+        })
+        .catch((e) => console.log(e));
+    }
+  }
+  static setSecondStroke(e, cityInput, fabricCanvas) {
+    const getStrokeSize = document.querySelector("#StrokeSize2").value;
+    console.log(getStrokeSize);
+    const objects = fabricCanvas._objects;
+    objects.forEach((obj, i) => {
+      if (fabricCanvas.item(i).className == "city") {
+        fabricCanvas.item(i).set("strokeWidth", getStrokeSize);
+        posterUI.writeCity(e, cityInput, fabricCanvas);
+      }
+    });
+    return getStrokeSize;
+  }
+  static setSecondColorStroke(e, cityInput, fabricCanvas) {
+    const getStrokeColor = document.querySelector("#StrokeColor2").value;
+    const objects = fabricCanvas._objects;
+    objects.forEach((obj, i) => {
+      if (fabricCanvas.item(i).className == "city") {
+        fabricCanvas.item(i).set("stroke", getStrokeColor);
+        posterUI.writeCity(e, cityInput, fabricCanvas);
+      }
+    });
+
+    return getStrokeColor;
+  }
+  static setSecondColorShadow(e, cityInput, fabricCanvas) {
+    const getShadowColor = document.querySelector("#ShadowColor2").value;
+    const objects = fabricCanvas._objects;
+    objects.forEach((obj, i) => {
+      if (fabricCanvas.item(i).className == "city") {
+        fabricCanvas.item(i).set("shadow", getShadowColor);
+        posterUI.writeCity(e, cityInput, fabricCanvas);
+      }
+    });
+
+    return getShadowColor;
+  }
+
+  // Third
+
+  static getThirdColor(e, opponentInput, fabricCanvas) {
+    const getColor = document.querySelector("#opponent-team-color").value;
+    let objects = fabricCanvas._objects;
+    objects.forEach((object, i) => {
+      if (fabricCanvas.item(i).className == "opponent") {
+        fabricCanvas.item(i).set("fill", getColor);
+        posterUI.writeOpponentTeamName(e, opponentInput, fabricCanvas);
+      }
+    });
+    return getColor;
+  }
+  static getThirdFont(e, opponentInput, fabricCanvas) {
+    const getFont = document.querySelector("#font3").value;
+    let objects = fabricCanvas._objects;
+    objects.forEach((object, i) => {
+      if (fabricCanvas.item(i).className == "opponent")
+        loadAndUse(getFont, fabricCanvas, i);
+    });
+
+    return getFont;
+
+    function loadAndUse(getFont, fabricCanvas, i) {
+      const myFont = new FontFaceObserver(getFont);
+      myFont
+        .load()
+        .then(() => {
+          if (fabricCanvas.item(i).className == "opponent") {
+            fabricCanvas.item(i).set("fontFamily", getFont);
+            fabricCanvas.renderAll();
+          }
+        })
+        .catch((e) => console.log(e));
+    }
+  }
+  static setThirdStroke(e, opponentInput, fabricCanvas) {
+    const getStrokeSize = document.querySelector("#StrokeSize3").value;
+    
+    const objects = fabricCanvas._objects;
+    objects.forEach((obj, i) => {
+      if (fabricCanvas.item(i).className == "opponent") {
+        fabricCanvas.item(i).set("StrokeWidth", getStrokeSize);
+        posterUI.writeOpponentTeamName(e, opponentInput, fabricCanvas);
+      }
+    });
+    return getStrokeSize;
+  }
+  static setThirdColorStroke(e, opponentInput, fabricCanvas) {
+    const getStrokeColor = document.querySelector("#StrokeColor3").value;
+    const objects = fabricCanvas._objects;
+    objects.forEach((obj, i) => {
+      if (fabricCanvas.item(i).className == "opponent") {
+        fabricCanvas.item(i).set("stroke", getStrokeColor);
+        posterUI.writeOpponentTeamName(e, opponentInput, fabricCanvas);
+      }
+    });
+
+    return getStrokeColor;
+  }
+  static setThirdColorShadow(e, opponentInput, fabricCanvas) {
+    const getShadowColor = document.querySelector("#ShadowColor3").value;
+    const objects = fabricCanvas._objects;
+    objects.forEach((obj, i) => {
+      if (fabricCanvas.item(i).className == "opponent") {
+        fabricCanvas.item(i).set("shadow", getShadowColor);
+        posterUI.writeOpponentTeamName(e, opponentInput, fabricCanvas);
+      }
+    });
+
+    return getShadowColor;
   }
   static addOpponentLogo(opponentLogo, fabricCanvas) {
     fabricCanvas._objects.forEach((images, i) => {
@@ -165,30 +372,31 @@ export class Edit {
     const getLogo = JSON.parse(localStorage.getItem("opponents"));
     console.log(getLogo[0].id);
     getLogo.forEach((logo, i) => {
-      console.log(logo.id);
-      
-      if ( logo.firstOpponentName + " " + logo.secondOpponentName == opponentLogo) {
-        let opponentImageLogo = new Image();
+      if (
+        logo.firstOpponentName + " " + logo.secondOpponentName ==
+        opponentLogo
+      ) {
+        console.log(logo.id);
+        const opponentImageLogo = new Image();
         opponentImageLogo.src = logo.logo;
-        opponentImageLogo.width = 150;
-        opponentImageLogo.height = "auto";
-        console.log(opponentImageLogo.width);
-        const fabricOpponentLogo = new fabric.Image(opponentImageLogo , {
-          left: fabricCanvas.width/2,
-          top: 400,
-          originX: "center",
-          originY: "center",
-          selectable: false,
-          className: "opponent-logo"
-        }); 
-        console.log(fabricOpponentLogo);
-        fabricOpponentLogo.scaleToWidth(150);
-        if(fabricOpponentLogo.height > 350) {
-         fabricOpponentLogo.scaleToHeight(150); 
-        }
-        
-        fabricCanvas.add(fabricOpponentLogo);  
-        fabricCanvas.renderAll();
+        opponentImageLogo.onload = () => {
+          const fabricOpponentLogo = new fabric.Image(opponentImageLogo, {
+            left: fabricCanvas.width / 2,
+            top: 450,
+            originX: "center",
+            originY: "center",
+            selectable: false,
+            className: "opponent-logo",
+          });
+          fabricOpponentLogo.scaleToWidth(150);
+          if (fabricOpponentLogo.height > 350) {
+            fabricOpponentLogo.scaleToHeight(100);
+          }
+          console.log(fabricOpponentLogo);
+          fabricCanvas.add(fabricOpponentLogo);
+
+          fabricCanvas.renderAll();
+        };
       }
     });
   }
@@ -200,30 +408,34 @@ export class Edit {
       }
     });
     const getPlayers = JSON.parse(localStorage.getItem("players"));
-    console.log(getPlayers[0].id);
     getPlayers.forEach((players, i) => {
-      console.log(players);
-      if (players.number + " "+ players.firstPlayerName + " " + players.lastPlayerName == playerImageSrc) {
+      if (
+        players.number +
+          " " +
+          players.firstPlayerName +
+          " " +
+          players.lastPlayerName ==
+        playerImageSrc
+      ) {
         let playerImage = new Image();
         playerImage.src = players.image;
-        playerImage.width = 150;
-        playerImage.height = "auto";
-        console.log(playerImage.width);
-        const fabricPlayerImage = new fabric.Image(playerImage , {
-          left: 525,
-          top: 500,
-          originX: "center",
-          originY: "center",
-          selectable: false,
-          className: "your-playerImage"
-        }); 
-        console.log(fabricPlayerImage);
-        fabricPlayerImage.scaleToWidth(150);
-        if(fabricPlayerImage.height > 350) {
-         fabricPlayerImage.scaleToHeight(150); 
-        }
-        fabricCanvas.add(fabricPlayerImage);  
-        fabricCanvas.renderAll();
+        playerImage.onload = () => {
+          const fabricPlayerImage = new fabric.Image(playerImage, {
+            left: 525,
+            top: 500,
+            originX: "center",
+            originY: "center",
+            selectable: false,
+            className: "your-playerImage",
+          });
+          console.log(fabricPlayerImage);
+          fabricPlayerImage.scaleToWidth(150);
+          if (fabricPlayerImage.height > 250) {
+            fabricPlayerImage.scaleToHeight(150);
+          }
+          fabricCanvas.add(fabricPlayerImage);
+          fabricCanvas.renderAll();
+        };
       }
     });
   }

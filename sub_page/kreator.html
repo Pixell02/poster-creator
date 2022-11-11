@@ -100,16 +100,27 @@
                 >
                 <ul class="show-list" id="your-team-color">
                   <li class="option">
-                    kolor napisu <input type="color" id="first-text-color" value ="#ffffff" />
+                    <span>kolor napisu</span>
+                    <input type="color" id="first-text-color" value="#ffffff" />
                   </li>
                   <li class="option">
-                    czcionka:
-                    <select name="fonts" id="fonts"></select>
+                    <span> czcionka:</span>
+                    <select name="fonts" id="font1">
+                      <option value="Montserrat">Montserrat</option>
+                      <option value="Acetone">Acetone</option>
+                      <option value="Octin">Octin</option>
+                      <option value="RadleySans">RadleySans</option>
+                      <option value="RankedSports">RankedSports</option>
+                      <option value="RumbleSport">Rumble sport</option>
+                      <option value="Runboy">Runboy</option>
+                      <option value="Spantaran">Spantaran</option>
+                    </select>
                   </li>
                   <li class="option">
-                    obrys <input type="number" /><input type="color" />
+                    <span>obrys</span>
+                    <input type="number" id="strokeSize1" /><input type="color" id="strokeColor1" />
                   </li>
-                  <li class="option">cień <input type="color" /></li>
+                  <li class="option">cień <input type="color" id="ShadowColor1"/></li>
                 </ul>
               </div>
               <p>Miejscowość, data i godzina</p>
@@ -132,16 +143,34 @@
                 >
                 <ul class="show-list" id="city-text-color">
                   <li class="option">
-                    kolor napisu <br /><input type="color"  id="city-text-color" value="#000000" />
+                    kolor napisu <input
+                      type="color"
+                      id="city-color"
+                      value="#FFF700"
+                    />
                   </li>
                   <li class="option">
                     czcionka:
-                    <select name="fonts" id="fonts"></select>
+                    <select name="fonts" id="font2">
+                      <option value="Montserrat">Montserrat</option>
+                      <option value="Acetone-w1gn6.tff">Acetone</option>
+                      <option value="octin college rg.otf">Octin</option>
+                      <option value="RadleySans-Zvybk.tff">RadleySans</option>
+                      <option value="RankedSports-4BMrB.tff">
+                        RankedSports
+                      </option>
+                      <option value="RumblesportathleticcapsBold-ZxDJ.otf">
+                        Rumble sport
+                      </option>
+                      <option value="RunboyFreeTrial-2ODAo.otf">Runboy</option>
+                      <option value="Spantaran (DEMO).ttf">Spantaran</option>
+                      <option value="Spantaran-GE2D.ttf">Spantaran</option>
+                    </select>
                   </li>
                   <li class="option">
-                    obrys <input type="number" /><input type="color" />
+                    obrys <input type="number" id="StrokeSize2"/><input type="color" id="StrokeColor2"/>
                   </li>
-                  <li class="option">cień <input type="color" /></li>
+                  <li class="option">cień <input type="color" id="ShadowColor2"/></li>
                 </ul>
               </div>
               <p>Nazwa przeciwnej drużyny</p>
@@ -160,19 +189,34 @@
                       d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z"
                     />
                   </svg>
-                  <span class="more">Więcej opcji</span></span>
+                  <span class="more">Więcej opcji</span></span
+                >
                 <ul class="show-list" id="opponent-team-text">
                   <li class="option">
-                    kolor napisu <br /><input type="color" />
+                    kolor napisu <br /><input type="color" id="opponent-team-color"/>
                   </li>
                   <li class="option">
                     czcionka: <br />
-                    <select name="fonts" id="fonts"></select>
+                    <select name="fonts" id="font3">
+                      <option value="Montserrat">Montserrat</option>
+                      <option value="Acetone-w1gn6.tff">Acetone</option>
+                      <option value="octin college rg.otf">Octin</option>
+                      <option value="RadleySans-Zvybk.tff">RadleySans</option>
+                      <option value="RankedSports-4BMrB.tff">
+                        RankedSports
+                      </option>
+                      <option value="RumblesportathleticcapsBold-ZxDJ.otf">
+                        Rumble sport
+                      </option>
+                      <option value="RunboyFreeTrial-2ODAo.otf">Runboy</option>
+                      <option value="Spantaran (DEMO).ttf">Spantaran</option>
+                      <option value="Spantaran-GE2D.ttf">Spantaran</option>
+                    </select>
                   </li>
                   <li class="option">
-                    obrys <input type="number" /><input type="color" />
+                    obrys <input type="number" id="StrokeSize3"/><input type="color" id="StrokeColor3"/>
                   </li>
-                  <li class="option">cień <input type="color" /></li>
+                  <li class="option">cień <input type="color" id="ShadowColor3"/></li>
                 </ul>
               </div>
               <p>Logo przeciwnej drużyny</p>
@@ -187,6 +231,7 @@
         </div>
       </div>
     </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fontfaceobserver/2.3.0/fontfaceobserver.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/dom-to-image/2.6.0/dom-to-image.min.js"></script>
     <script src="../js_files/fabric.min.js"></script>

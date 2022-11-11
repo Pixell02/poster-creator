@@ -112,7 +112,10 @@ export class posterUI {
     text.width = 300;
     text.left = WIDTH / 2 - text.width / 2;
     text.className = "opponent";
-    fabricCanvas.add(text);
+    setTimeout(adding, 5);
+    function adding(){
+      fabricCanvas.add(text);
+    }
     fabricCanvas.renderAll();
   }
 

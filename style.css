@@ -106,7 +106,20 @@ ul {
   border: black solid 1px;
   width: 150px;
 }
-
+input[type="range"] {
+  width: 80%;
+}
+.range-container {
+  margin: 5vh 0 0 14vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+.number-container {
+  margin: 1vh 0 0 1vh;
+  font-size: 25px;
+  font-weight: bold;
+}
 .team-picture {
   width: 150px;
 }
@@ -210,7 +223,6 @@ ul {
   display: flex;
   width: 100%;
   height: 100%;
-  flex-direction: column;
 }
 .poster {
   max-width: 100%;
@@ -286,13 +298,27 @@ a {
 }
 .right-container {
   margin-top: 80px;
-  margin-left: 150px;
+  margin-left: 140px;
   width: 100%;
   display: flex;
-  min-height: 876px;
+  bottom: 0;
   flex-direction: column;
 }
-
+.price-block {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin: 10px 0 0 0;
+}
+.price-container {
+  margin: 10px 0 0 0;
+  font-size: 25px;
+  font-weight: 500;
+}
+hr {
+  margin-top: 1vh;
+}
 .mt {
   display: flex;
   align-items: center;
@@ -346,7 +372,6 @@ input[type="color"], select {
 .flex-left-container {
   display: flex;
   height: 100%;
-  
 }
 
 .title {
@@ -449,8 +474,6 @@ p {
     flex-wrap: wrap;
     width: 100%;
     height: 100%;
-    margin-left: 0;
-    
   }
   #flex-container {
     width: 100%;
@@ -459,6 +482,7 @@ p {
     display: flex;
     width: 100%;
     overflow: scroll;
+    margin-top: 20px;
   }
   #creator-window {
     display: flex;
@@ -466,7 +490,6 @@ p {
     align-items: left;
     justify-content: left;
     margin: 0 0 0 20px;
-    
   }
   #creator {
     border: none;

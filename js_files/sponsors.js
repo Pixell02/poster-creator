@@ -1,5 +1,6 @@
 import { Sponsor, SponsorUI, StoreSponsor } from "./teamES6.js";
-
+import * as leftBar from './left-bar.js';
+leftBar.leftBar.innerHTML = leftBar.leftBarContent;
 window.addEventListener("DOMContentLoaded", StoreSponsor.displaySponsor);
 
 const addBtn = document.querySelector(".add-Btn");

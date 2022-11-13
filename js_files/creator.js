@@ -1,7 +1,11 @@
 import { saveFile } from "./save-file.js";
 import { Edit, posterUI } from "./creator-classes.js";
-
+import * as leftBar from './left-bar.js';
+console.log(leftBar.leftBarContent);
+console.log(leftBar.leftBar)
+leftBar.leftBar.innerHTML = leftBar.leftBarContent;
 window.addEventListener("DOMContentLoaded", posterUI.loadImagesToSelect);
+
 let pickFont = "montserrat";
 const WIDTH = 700;
 const canvas = document.getElementById("poster-edit");

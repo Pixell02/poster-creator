@@ -1,5 +1,8 @@
 import { Opponent, OpponentUI, StoreOpponent } from "./teamES6.js";
-
+import * as leftBar from './left-bar.js';
+console.log(leftBar.leftBarContent);
+console.log(leftBar.leftBar)
+leftBar.leftBar.innerHTML = leftBar.leftBarContent;
 window.addEventListener("DOMContentLoaded", StoreOpponent.displayOpponent);
 
 const addBtn = document.querySelector(".add-Btn");

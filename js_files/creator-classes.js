@@ -98,7 +98,7 @@ export class posterUI {
       color: Edit.setThirdColorShadow(e, opponentInput, fabricCanvas),
       blur: 20,
     });
-    const text = new fabric.Text(opponentInput.value, {
+    const text = new fabric.Textbox(opponentInput.value, {
       fontFamily: Edit.getThirdFont(e, opponentInput, fabricCanvas),
       fill: Edit.getThirdColor(e, opponentInput, fabricCanvas),
       shadow: shadow,
@@ -110,6 +110,7 @@ export class posterUI {
     });
     console.log(text)
     text.width = 300;
+    text.height = 150;
     text.left = WIDTH / 2 - text.width / 2;
     text.className = "opponent";
     setTimeout(adding, 5);
@@ -410,6 +411,7 @@ export class Edit {
         fabricCanvas.remove(fabricCanvas.item(i));
       }
     });
+    
     const getPlayers = JSON.parse(localStorage.getItem("players"));
     getPlayers.forEach((players, i) => {
       if (
@@ -422,6 +424,7 @@ export class Edit {
       ) {
         let playerImage = new Image();
         playerImage.src = players.image;
+
         playerImage.onload = () => {
           const fabricPlayerImage = new fabric.Image(playerImage, {
             left: 525,
@@ -431,11 +434,17 @@ export class Edit {
             selectable: false,
             className: "your-playerImage",
           });
-          console.log(fabricPlayerImage);
-          fabricPlayerImage.scaleToWidth(150);
+          fabricPlayerImage.scaleToWidth(100);
           if (fabricPlayerImage.height > 250) {
             fabricPlayerImage.scaleToHeight(150);
           }
+          
+          fabricPlayerImage.filters.push(new fabric.Image.filters.BlendColor({
+            color: '#B5a718',
+            mode: 'darken'
+          }));
+          
+          fabricPlayerImage.applyFilters();
           fabricCanvas.add(fabricPlayerImage);
           fabricCanvas.renderAll();
         };

@@ -1,0 +1,16 @@
+{
+  "teams":[ 
+    {
+      "firstTeamName": "czarni",
+      "lastTeamName": "pałck",
+      "image": "",
+      "players": [{
+        "firstPlayerName": "imie",
+        "lastPlayerName":"nazwisko",
+        "image": "",
+         "number":"123"
+        }
+      ]
+    }
+  ]
+}

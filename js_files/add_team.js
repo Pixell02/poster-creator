@@ -1,9 +1,9 @@
-import { teamUI as teamUI, Team as Team, StoreTeam as StoreTeam } from "./teamES6.js";
+import { teamUI, Team , StoreTeam } from "./teamES6.js";
 
 const store = new StoreTeam();
 
-document.addEventListener("DOMContentLoaded", StoreTeam.displayTeams)
-
+document.addEventListener("DOMContentLoaded",StoreTeam.displayTeams)
+ 
 document.querySelector(".down-container").addEventListener("click", (e) => {
    
     let chosenTeam = e.target.id;

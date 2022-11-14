@@ -1,3 +1,4 @@
+import {http} from './http';
 export class Team {
   constructor(firstTeamName, lastTeamName, logo) {
     this.firstTeamName = firstTeamName;
@@ -83,6 +84,9 @@ export class teamUI {
 
 export class StoreTeam {
   static getTeams() {
+    // http.get('http://localhost:3000/teams')
+    //   .then(data => console.log(data))
+    //   .catch( err => console.error(err));
     let teams;
     if (localStorage.getItem("teams") == null) {
       teams = new Array();
@@ -311,7 +315,7 @@ export class StoreOpponent {
   static addOpponent(opponent) {
     const opponents = StoreOpponent.getOpponent();
     opponents.push(opponent);
-    localStorage.setItem('opponents', JSON.stringify(opponents));
+    localStorage.setItem('opponent', JSON.stringify(opponents));
     
   }
 }
